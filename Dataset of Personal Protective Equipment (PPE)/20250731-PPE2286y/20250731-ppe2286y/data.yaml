@@ -1,0 +1,7 @@
+path: C:/Users/0/Desktop/ultralytics-8391/20250731-ppe2286y
+train: ./train/images
+val: ./valid/images
+test:
+
+nc: 4
+names: ['Helmet', 'NoHelmet', 'NoVest', 'Vest']

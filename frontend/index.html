@@ -1,0 +1,139 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PPE Safety Monitor</title>
+    <link rel="stylesheet" href="/style.css">
+    <script src="/script.js" defer></script>
+</head>
+<body>
+    <header class="topbar">
+        <div class="brand-icon">PPE</div>
+        <div>
+            <h1>PPE Safety Monitor</h1>
+            <p>AI-powered helmet and safety vest detection</p>
+        </div>
+        <span class="live-badge">● SYSTEM</span>
+    </header>
+
+    <main class="container">
+        <section class="intro">
+            <p class="eyebrow">WORKPLACE SAFETY</p>
+            <h2>AI-Based Industrial Safety Detection System</h2>
+            <p>Upload a video to identify helmet and safety vest violations.</p>
+        </section>
+
+        <section class="workspace">
+            <div class="panel upload-panel">
+                <h2>Upload video</h2>
+                <p class="muted">Choose an MP4, AVI, MOV, MKV or WEBM video.</p>
+
+                <label class="drop-area" for="videoFile">
+                    <span class="upload-icon">↑</span>
+                    <strong>Choose a video file</strong>
+                    <span id="fileName">No video selected</span>
+                    <input
+                        type="file"
+                        id="videoFile"
+                        accept="video/mp4,video/avi,video/quicktime,video/x-matroska,video/webm,.mp4,.avi,.mov,.mkv,.webm"
+                    >
+                </label>
+
+                <button id="analyzeBtn" class="primary-btn" type="button">
+                    Analyze video →
+                </button>
+
+                <p id="message" class="message" role="status">
+                    Select a video to begin.
+                </p>
+
+                <div class="legend">
+                    <div><span class="dot red"></span> Violation detected</div>
+                    <div><span class="dot green"></span> PPE detected</div>
+                    <div><span class="dot yellow"></span> Needs checking</div>
+                </div>
+
+                <div class="notice">
+                    <strong>Note:</strong> AI predictions may be incorrect.
+                    A supervisor should verify reported violations.
+                </div>
+            </div>
+
+            <div class="panel report-panel">
+                <div class="panel-heading">
+                    <div>
+                        <h2>Analysis report</h2>
+                        <p class="muted">Results from the uploaded video</p>
+                    </div>
+                    <span id="reportBadge" class="status-badge neutral">WAITING</span>
+                </div>
+
+                <div id="emptyState" class="empty-state">
+                    <div class="empty-icon">▶</div>
+                    <h3>Your report will appear here</h3>
+                    <p>Select a video and run the analysis to see the results.</p>
+                </div>
+
+                <div id="reportContent" hidden>
+                    <div id="statusCard" class="status-card neutral">
+                        <span id="statusTitle">CHECKING VIDEO</span>
+                        <p id="statusMessage">Waiting for results.</p>
+                    </div>
+
+                    <div class="stats-grid">
+                        <div class="stat">
+                            <span>Detections</span>
+                            <strong id="detectionCount">0</strong>
+                        </div>
+                        <div class="stat">
+                            <span>Frames checked</span>
+                            <strong id="framesProcessed">0</strong>
+                        </div>
+                        <div class="stat violation-stat">
+                            <span>No helmet</span>
+                            <strong id="noHelmetCount">0</strong>
+                        </div>
+                        <div class="stat violation-stat">
+                            <span>No vest</span>
+                            <strong id="noVestCount">0</strong>
+                        </div>
+                    </div>
+
+                    <h3 class="section-title">Processed video</h3>
+                    <video
+                        id="processedVideo"
+                        class="processed-video"
+                        controls
+                        playsinline
+                        preload="metadata"
+                    ></video>
+
+                    <a
+                        id="downloadBtn"
+                        class="download-btn"
+                        href="#"
+                        download
+                        hidden
+                    >Download processed video ↓</a>
+
+                    <p class="muted small">
+                        Original uploaded video is retained in backend/uploads.
+                        Processed video is saved in backend/outputs.
+                    </p>
+
+                    <h3 class="section-title">Detection details</h3>
+                    <div id="detectionList" class="detection-list">
+                        No detections to show.
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        PPE Safety Monitor · AI-assisted safety review
+    </footer>
+</body>
+</html>
